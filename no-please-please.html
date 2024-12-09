@@ -1,0 +1,134 @@
+<!-- no-please-please.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Invitation</title>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f9f9f9;
+    }
+
+    .container-for-asking {
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: red;
+    }
+
+    .gif-container {
+      width: 80%;
+      margin: 0 auto 20px auto;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .button {
+      position: relative;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #accept-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 40px 60px; /* Increased size for Yes button (40% bigger than No) */
+    }
+
+    #decline-btn {
+      background-color: #dc3545;
+      color: white;
+      height: 20px;
+      padding: 15px 30px; /* Default size for No button */
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    .effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    #accept-btn:hover .effect {
+      opacity: 1;
+    }
+
+    #decline-btn:hover .effect {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-for-asking">
+    <h1>No Please, I'm begging you!!!</h1>
+
+    <div class="gif-container">
+      <div class="tenor-gif-embed" data-postid="12875606672124040541" data-share-method="host" data-aspect-ratio="1.26437" data-width="100%">
+        <a href="https://tenor.com/view/toby-cry-phone-spider-man-cry-phone-spider-man-phone-toby-phone-gif-12875606672124040541">Toby Cry Phone Spider Man Cry Phone GIF</a> from <a href="https://tenor.com/search/toby+cry+phone-gifs">Toby Cry Phone GIFs</a>
+      </div>
+      <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+
+    <h1>Hi Yumi, Would you like to go out with me?</h1>
+    <div class="buttons">
+      <div id="accept-btn" class="button yes" onclick="window.location.href='yes-file.html'">
+        Yes
+        <dotlottie-player
+          class="effect"
+          src="https://lottie.host/d28e1a3d-801e-4c99-ad95-51d2738d2f82/rbwCIp2dim.lottie"
+          background="transparent"
+          speed="1"
+          style="width: 300px; height: 300px"
+          loop
+          autoplay>
+        </dotlottie-player>
+      </div>
+      <div id="decline-btn" class="button no" onclick="window.location.href='no-please-please-please.html'">
+        No
+        <dotlottie-player
+          class="effect"
+          src="https://lottie.host/4b7d04ff-3038-463e-8f74-94f0cb4cc6d7/CcZQdAc8XM.lottie"
+          background="transparent"
+          speed="1"
+          style="width: 300px; height: 300px"
+          loop
+          autoplay>
+        </dotlottie-player>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!-- congrats.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJk6v5+R8K5e6t98tN1lo84bXy26r43FqBX3T2dCkH8e4Fs6/3pH2q0C9kP1F" crossorigin="anonymous">
+  <style>
+    .confirmation-message {
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      color: #28a745; /* Bootstrap success color */
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .btn-back {
+      background-color: #007bff; /* Bootstrap primary color */
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: #0056b3;
+    }
+
+    /* GIF Box Styling */
+    .gif-container {
+      margin: 20px auto;
+      width: 80%;
+      max-width: 600px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <!-- GIF Box -->
+    <div class="gif-container">
+      <div class="tenor-gif-embed" data-postid="26258146" data-share-method="host" data-aspect-ratio="1.2549" data-width="100%">
+        <a href="https://tenor.com/view/meong-cat-love-gif-26258146">Meong Cat GIF</a> from <a href="https://tenor.com/search/meong-gifs">Meong GIFs</a>
+      </div>
+    </div>
+
+    <!-- Confirmation Message -->
+    <h1 class="confirmation-message" id="confirmation-message">Loading...</h1>
+    
+    <!-- Back Button -->
+    <!-- <a href="index.html" class="btn-back mt-3">Go Back</a> -->
+  </div>
+  
+  <script>
+    window.onload = function() {
+      const date = localStorage.getItem('eventDate');
+      const time = localStorage.getItem('eventTime');
+      const location = localStorage.getItem('eventLocation');
+      
+      // Format the output
+      if (date && time && location) {
+        const formattedDate = new Date(date).toLocaleDateString('en-US', {
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+        const formattedTime = new Date(`1970-01-01T${time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        // Display the message
+        const message = `See you soon!!! <br> Don't forget on ${formattedDate}, at ${formattedTime} in ${location}.`;
+
+        // Set the innerHTML of the element to the message so that <br> is rendered as a line break
+        document.getElementById('confirmation-message').innerHTML = message;
+      }
+    }
+  </script>
+
+  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+</body>
+</html>

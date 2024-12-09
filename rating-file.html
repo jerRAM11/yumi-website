@@ -1,0 +1,154 @@
+<!-- rating-file.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate How Excited Are?</title>
+  <!-- Include Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJk6v5+R8K5e6t98tN1lo84bXy26r43FqBX3T2dCkH8e4Fs6/3pH2q0C9kP1F" crossorigin="anonymous">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #e0e0e0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .gif-container {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .gif-container iframe {
+      width: 100%;
+      height: auto;
+      border: none;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: green;
+      margin-bottom: 30px;
+    }
+
+    .range-style {
+      width: 400px;
+      height: 60px;
+      padding: 20px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      box-shadow: -2px -2px 8px white, 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .button {
+      margin-top: 25px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      background-color: #dc3545;
+    }
+
+    #ratingValue {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Gif Container -->
+  <div class="gif-container" id="gifContainer">
+    <div class="tenor-gif-embed" data-postid="4711801571749206443" data-share-method="host" data-aspect-ratio="1.33155" data-width="100%">
+      <a href="https://tenor.com/view/tom-y-jerry-tom-and-jerry-meme-sad-cry-gif-4711801571749206443">Tom Y Jerry Tom And Jerry GIF</a> from <a href="https://tenor.com/search/tom+y+jerry-gifs">Tom Y Jerry GIFs</a>
+    </div>
+  </div>
+  
+  <h1>Rate how excited are you?</h1>
+  <!-- Rating Slider -->
+  <input type="range" class="range-style" min="0" max="10" step="1" id="rating" value="0" />
+  <div id="ratingValue">Excitement Level: 0</div>
+  <button class="button" onclick="window.location.href='congrats.html'">CLICK ME</button>
+
+  <!-- Include Tenor Script -->
+  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+  <!-- Include Bootstrap 5 JS (optional for interactivity) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb6E3tBCsw2P0p/WezFInboz3yGz3z/cy0uLR2Qz1dFmlJ5yJ" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0r6F7gxEowK6z7WnP5vY4xTm9hZQx5B8Vq8HfHNhQG2OunYx" crossorigin="anonymous"></script>
+
+  <!-- JavaScript to update rating slider value and GIF -->
+  <script>
+    const ratingSlider = document.getElementById('rating');
+    const ratingValue = document.getElementById('ratingValue');
+    const gifContainer = document.getElementById('gifContainer');
+
+    function updateGif() {
+      // Update GIF based on rating
+      if (ratingSlider.value == 0) {
+        gifContainer.innerHTML = `
+          <div class="tenor-gif-embed" data-postid="4711801571749206443" data-share-method="host" data-aspect-ratio="1.33155" data-width="100%">
+            <a href="https://tenor.com/view/tom-y-jerry-tom-and-jerry-meme-sad-cry-gif-4711801571749206443">Tom Y Jerry Tom And Jerry GIF</a> from <a href="https://tenor.com/search/tom+y+jerry-gifs">Tom Y Jerry GIFs</a>
+          </div>
+        `;
+      } else if (ratingSlider.value <= 5) {
+        gifContainer.innerHTML = `
+          <div class="tenor-gif-embed" data-postid="13806507" data-share-method="host" data-aspect-ratio="1.23333" data-width="100%">
+            <a href="https://tenor.com/view/peachcat-cat-cats-crying-sad-gif-13806507">Peachcat Cats Sticker</a> from <a href="https://tenor.com/search/peachcat-stickers">Peachcat Stickers</a>
+          </div>
+        `;
+      } else {
+        gifContainer.innerHTML = `
+          <div class="tenor-gif-embed" data-postid="25055357" data-share-method="host" data-aspect-ratio="1.0356" data-width="100%">
+            <a href="https://tenor.com/view/100-gif-25055357">100 Stickers</a> from <a href="https://tenor.com/search/100-stickers">100 Stickers</a>
+          </div>
+        `;
+      }
+      tenorReload();
+    }
+
+    ratingSlider.addEventListener('input', function() {
+      ratingValue.textContent = `Excitement Level: ${ratingSlider.value}`;
+      updateGif();
+    });
+
+    // Save rating and redirect to congrats.html
+    function saveAndRedirect() {
+      const rating = ratingSlider.value;
+      localStorage.setItem('eventRating', rating);
+      window.location.href = 'congrats.html';
+    }
+
+    // Trigger save and redirect when button is clicked
+    document.querySelector('.button').addEventListener('click', saveAndRedirect);
+
+    function tenorReload() {
+      const script = document.createElement('script');
+      script.src = "https://tenor.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+
+</body>
+</html>

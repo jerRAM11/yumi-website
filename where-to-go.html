@@ -1,0 +1,153 @@
+<!-- where-to-go.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where to Go</title>
+  <!-- Include Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJk6v5+R8K5e6t98tN1lo84bXy26r43FqBX3T2dCkH8e4Fs6/3pH2q0C9kP1F" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .circle-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+
+    .circle:hover {
+      transform: scale(1.1);
+      background-color: #dc3545;
+    }
+
+    .circle-text {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      pointer-events: none; /* Button is disabled initially */
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    h1 {
+      font-size: 32px;
+      color: green;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 767px) {
+      .circle {
+        width: 120px;
+        height: 120px;
+      }
+      .circle-text {
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Where do you want to go?</h1>
+  <div class="container">
+    <div class="col-6 col-md-4 col-lg-2 circle-container">
+      <div class="circle" style="background-image: url('Go_Angono_Rizal_Tagpuan.jpg');" data-location="Angono Rizal 'Tagpuan'"></div>
+      <div class="circle-text">Angono Rizal<br>'Tagpuan'</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2 circle-container">
+      <div class="circle" style="background-image: url('Go_Luneta_Park.jpg');" data-location="Luneta 'Rizal' Park"></div>
+      <div class="circle-text">Luneta 'Rizal' Park</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2 circle-container">
+      <div class="circle" style="background-image: url('Go_National_Museum.jpg');" data-location="National Museum"></div>
+      <div class="circle-text">National Museum</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2 circle-container">
+      <div class="circle" style="background-image: url('Go_SM_MOA_SeaSide.webp');" data-location="MOA Sea Side"></div>
+      <div class="circle-text">MOA Sea Side</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2 circle-container">
+      <div class="circle" style="background-image: url('Go_Star_City_Pasay.png');" data-location="Star City Pasay"></div>
+      <div class="circle-text">Star City Pasay</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-2 circle-container">
+      <div class="circle" style="background-image: url('Go_Tagaytay_Sky_Ranch.png');" data-location="UP Diliman 'Sunken Garden'"></div>
+      <div class="circle-text">UP Diliman<br>'Sunken Garden'</div>
+    </div>
+  </div>
+  <button class="button" id="clickMeButton" onclick="window.location.href='where-to-eat.html'">CLICK ME</button>
+
+  <!-- Include Bootstrap 5 JS (optional for interactivity) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb6E3tBCsw2P0p/WezFInboz3yGz3z/cy0uLR2Qz1dFmlJ5yJ" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0r6F7gxEowK6z7WnP5vY4xTm9hZQx5B8Vq8HfHNhQG2OunYx" crossorigin="anonymous"></script>
+
+<script>
+  const clickMeButton = document.getElementById('clickMeButton');
+  const circles = document.querySelectorAll('.circle');
+
+  circles.forEach(circle => {
+    circle.addEventListener('click', function() {
+      // Enable the button when any circle is clicked
+      clickMeButton.style.pointerEvents = 'auto';
+      clickMeButton.style.backgroundColor = '#28a745';
+
+      // Save the selected location to localStorage
+      localStorage.setItem('eventLocation', this.getAttribute('data-location'));
+    });
+  });
+</script>
+
+
+</body>
+</html>
